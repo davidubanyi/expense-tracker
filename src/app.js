@@ -18,8 +18,6 @@ store.dispatch(
 );
 console.log(store.getState());
 
-store.dispatch(setTextFilter("gas"));
-
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filter);
 console.log(visibleExpenses);
