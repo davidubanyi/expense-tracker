@@ -36,9 +36,9 @@ class ExpenseListFilters extends React.Component {
         <select
           onChange={e => {
             if (e.target.value === "date") {
-              props.dispatch(sortByDate());
+              this.props.dispatch(sortByDate());
             } else if (e.target.value === "amount") {
-              props.dispatch(sortByAmount());
+              this.props.dispatch(sortByAmount());
             }
           }}
         >
