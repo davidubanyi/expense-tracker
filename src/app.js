@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import { addExpense } from "./redux/actions/expenses";
-import { setTextFilter } from "./redux/actions/filters";
 import getVisibleExpenses from "./redux/selectors/expenses";
 
 const store = configureStore();
@@ -14,7 +13,7 @@ store.dispatch(
   addExpense({ description: "water bill", amount: 5000, createdAt: 1000 })
 );
 store.dispatch(
-  addExpense({ description: "gas bill", amount: 15000, createdAt: 5000 })
+  addExpense({ description: "gas bill", amount: 3000, createdAt: 5000 })
 );
 console.log(store.getState());
 
