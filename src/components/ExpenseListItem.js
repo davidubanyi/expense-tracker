@@ -3,12 +3,19 @@ import { connect } from "react-redux";
 import { removeExpense } from "../redux/actions/expenses";
 import { Link } from "react-router-dom";
 
-const ExpenseListItem = ({ dispatch, description, amount, createdAt, id }) => {
+export const ExpenseListItem = ({
+  dispatch,
+  group,
+  description,
+  amount,
+  createdAt,
+  id
+}) => {
   return (
     <div>
       <h3>{description}</h3>
       <p>
-        {amount} - {createdAt}
+        {amount} - {createdAt} - {group}
       </p>
       <button
         onClick={e => {

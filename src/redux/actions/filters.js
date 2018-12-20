@@ -1,3 +1,9 @@
+//SET GROUP FILTER
+export const setGroupFilter = (groupName = "") => ({
+  type: "SET_GROUP_FILTER",
+  groupName
+});
+
 //SET_TEXT_FILTER
 export const setTextFilter = (text = "") => ({
   type: "SET_TEXT_FILTER",

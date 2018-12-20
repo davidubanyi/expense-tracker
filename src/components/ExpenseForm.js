@@ -2,7 +2,6 @@ import React from "react";
 import moment from "moment";
 import "react-dates/initialize";
 import { SingleDatePicker } from "react-dates";
-import "react-dates/lib/css/_datepicker.css";
 
 const now = moment();
 console.log(now.format("MMMM D, YYYY"));
@@ -12,10 +11,12 @@ class ExpenseForm extends React.Component {
     super(props);
 
     this.state = {
+      group: props.expense ? props.expense.group : "",
       description: props.expense ? props.expense.description : "",
       note: props.expense ? props.expense.note : "",
       amount: props.expense ? (props.expense.amount / 100).toString() : "",
       createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      categories: props.categoryGroup,
       calenderFocused: false,
       error: ""
     };
@@ -25,6 +26,13 @@ class ExpenseForm extends React.Component {
     const description = e.target.value;
     this.setState(() => ({
       description
+    }));
+  };
+
+  onGroupChange = e => {
+    const group = e.target.value.toLowerCase();
+    this.setState(() => ({
+      group
     }));
   };
 
@@ -55,6 +63,10 @@ class ExpenseForm extends React.Component {
       calenderFocused: focused
     }));
   };
+
+  onCategoryClick = e => {
+    this.onGroupChange(e);
+  };
   onSubmit = e => {
     e.preventDefault();
     if (!this.state.description || !this.state.amount) {
@@ -66,11 +78,18 @@ class ExpenseForm extends React.Component {
         error: ""
       }));
       this.props.onSubmit({
+        group: this.state.group || "random",
         description: this.state.description,
         amount: parseFloat(this.state.amount, 10) * 100,
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
       });
+      if (
+        this.state.group &&
+        !this.state.categories.includes(this.state.group)
+      ) {
+        this.props.addCategory(this.state.group);
+      }
     }
   };
 
@@ -78,7 +97,24 @@ class ExpenseForm extends React.Component {
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
+        {this.state.categories.map(category => {
+          return (
+            <button
+              key={category}
+              value={category}
+              onClick={this.onCategoryClick}
+            >
+              {category}
+            </button>
+          );
+        })}
         <form onSubmit={this.onSubmit}>
+          <input
+            type="text"
+            placeholder="Spending group e.g food"
+            value={this.state.group}
+            onChange={this.onGroupChange}
+          />
           <input
             type="text"
             placeholder="Description"

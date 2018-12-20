@@ -2,19 +2,41 @@ import React from "react";
 import ExpenseForm from "./ExpenseForm";
 import { connect } from "react-redux";
 import { addExpense } from "../redux/actions/expenses";
+import { addCategory } from "../redux/actions/category";
 
-const AddExpensePage = props => {
-  return (
-    <div>
-      <h1>Add Expense</h1>
-      <ExpenseForm
-        onSubmit={expense => {
-          props.dispatch(addExpense(expense));
-          props.history.push("/");
-        }}
-      />
-    </div>
-  );
-};
+export class AddExpensePage extends React.Component {
+  onSubmit = expense => {
+    this.props.addExpense(expense);
+    this.props.history.push("/");
+  };
+  addCategory = category => {
+    this.props.addCategory(category);
+  };
 
-export default connect()(AddExpensePage);
+  render() {
+    return (
+      <div>
+        <h1>Add Expense</h1>
+        <ExpenseForm
+          onSubmit={this.onSubmit}
+          categoryGroup={this.props.categories}
+          addCategory={this.addCategory}
+        />
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  addExpense: expense => dispatch(addExpense(expense)),
+  addCategory: category => dispatch(addCategory(category))
+});
+
+const mapStateToProps = state => ({
+  categories: state.category
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddExpensePage);

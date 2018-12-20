@@ -4,12 +4,15 @@ const filterReducerDefaultState = {
   text: "",
   sortBy: "date",
   startDate: moment().startOf("month"),
-  endDate: moment().endOf("month")
+  endDate: moment().endOf("month"),
+  group: ""
 };
 
 //filter reducer
 export default (state = filterReducerDefaultState, action) => {
   switch (action.type) {
+    case "SET_GROUP_FILTER":
+      return { ...state, group: action.groupName };
     case "SET_TEXT_FILTER":
       return { ...state, text: action.text };
     case "SORT_BY_AMOUNT":

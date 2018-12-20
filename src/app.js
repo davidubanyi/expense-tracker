@@ -5,21 +5,14 @@ import configureStore from "./redux/store/configureStore";
 import { Provider } from "react-redux";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
+import "react-dates/lib/css/_datepicker.css";
 import { addExpense } from "./redux/actions/expenses";
 import getVisibleExpenses from "./redux/selectors/expenses";
 
 const store = configureStore();
-store.dispatch(
-  addExpense({ description: "water bill", amount: 5000, createdAt: 1000 })
-);
-store.dispatch(
-  addExpense({ description: "gas bill", amount: 3000, createdAt: 5000 })
-);
-console.log(store.getState());
 
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filter);
-console.log(visibleExpenses);
 
 const jsx = (
   <Provider store={store}>
