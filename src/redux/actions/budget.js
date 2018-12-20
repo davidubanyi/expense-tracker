@@ -4,27 +4,25 @@ import uuid from "uuid";
 export const addBudget = ({
   group = "",
   description = "",
-  note = "",
   amount = 0,
   createdAt = 0
 } = {}) => ({
   type: "ADD_BUDGET",
-  expense: {
+  budget: {
     id: uuid(),
     group,
     description,
-    note,
     amount,
     createdAt
   }
 });
 //REMOVE_EXPENSE
-export const removeExpense = id => ({
+export const removeBudget = id => ({
   type: "REMOVE_BUDGET",
   id
 });
 //EDIT_EXPENSE
-export const editExpense = (id, updates) => ({
+export const editBudget = (id, updates) => ({
   type: "EDIT_BUDGET",
   id,
   updates
