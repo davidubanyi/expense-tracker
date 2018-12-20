@@ -1,8 +1,8 @@
 import React from "react";
-import ExpenseForm from "./ExpenseForm";
+import ExpenseForm from "../ExpenseForm";
 import { connect } from "react-redux";
-import { addExpense } from "../redux/actions/expenses";
-import { addCategory } from "../redux/actions/category";
+import { addExpense } from "../../redux/actions/expenses";
+import { addCategory } from "../../redux/actions/category";
 
 export class AddExpensePage extends React.Component {
   onSubmit = expense => {
