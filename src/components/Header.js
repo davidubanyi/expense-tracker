@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header>
       <h1>Expensify</h1>
-      <NavLink to="/" activeClassName="is-active" exact={true}>
+      <NavLink to="/expense" activeClassName="is-active" exact={true}>
         ExpensesDashboard
       </NavLink>
       <NavLink to="/createExpenses" activeClassName="is-active">
@@ -14,7 +14,7 @@ const Header = () => {
       <NavLink to="/createBudget" activeClassName="is-active">
         CreateBudget
       </NavLink>
-      <NavLink to="/budgetDashboard" activeClassName="is-active">
+      <NavLink to="/budget" activeClassName="is-active">
         ViewBudget
       </NavLink>
     </header>

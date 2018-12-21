@@ -6,7 +6,7 @@ import { editExpense, removeExpense } from "../../redux/actions/expenses";
 export class EditExpensePage extends React.Component {
   onSubmit = expense => {
     this.props.editExpense(this.props.expense.id, expense);
-    this.props.history.push("/");
+    this.props.history.push("/expense");
   };
 
   onRemoveHandler = () => {

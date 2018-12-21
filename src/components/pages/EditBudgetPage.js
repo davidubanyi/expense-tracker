@@ -6,7 +6,7 @@ import { editBudget, removeBudget } from "../../redux/actions/budget";
 export class EditBudgetPage extends React.Component {
   onSubmit = budget => {
     this.props.editBudget(this.props.budget.id, budget);
-    this.props.history.push("/budgetDashboard");
+    this.props.history.push("/budget");
   };
 
   onRemoveHandler = () => {

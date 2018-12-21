@@ -9,6 +9,7 @@ import NotFoundPage from "../components/pages/NotFoundPage";
 import AddBudgetPage from "../components/pages/AddBudgetPage";
 import BudgetDashboardPage from "../components/pages/BudgetDashboardPage";
 import EditBudgetPage from "../components/pages/EditBudgetPage";
+import HomePage from "../components/pages/HomePage";
 
 const AppRouter = () => {
   return (
@@ -16,8 +17,9 @@ const AppRouter = () => {
       <div>
         <Header />
         <Switch>
-          <Route path="/" component={ExpenseDashboardPage} exact={true} />
-          <Route path="/budgetDashboard" component={BudgetDashboardPage} />
+          <Route path="/" component={HomePage} exact={true} />
+          <Route path="/expense" component={ExpenseDashboardPage} />
+          <Route path="/budget" component={BudgetDashboardPage} />
           <Route path="/createExpenses" component={AddExpensePage} />
           <Route path="/createBudget" component={AddBudgetPage} />
           <Route path="/editExpense/:id" component={EditExpensePage} />
