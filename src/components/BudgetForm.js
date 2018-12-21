@@ -3,19 +3,15 @@ import moment from "moment";
 import "react-dates/initialize";
 import { SingleDatePicker } from "react-dates";
 
-const now = moment();
-console.log(now.format("MMMM D, YYYY"));
-
-class ExpenseForm extends React.Component {
+class BudgetForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      group: props.expense ? props.expense.group : "",
-      description: props.expense ? props.expense.description : "",
-      note: props.expense ? props.expense.note : "",
-      amount: props.expense ? (props.expense.amount / 100).toString() : "",
-      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      group: props.budget ? props.budget.group : "",
+      description: props.budget ? props.budget.description : "",
+      amount: props.budget ? (props.budget.amount / 100).toString() : "",
+      createdAt: props.budget ? moment(props.budget.createdAt) : moment(),
       categories: props.categoryGroup,
       calenderFocused: false,
       error: ""
@@ -33,13 +29,6 @@ class ExpenseForm extends React.Component {
     const group = e.target.value.toLowerCase();
     this.setState(() => ({
       group
-    }));
-  };
-
-  onNoteChange = e => {
-    const note = e.target.value;
-    this.setState(() => ({
-      note
     }));
   };
 
@@ -81,8 +70,7 @@ class ExpenseForm extends React.Component {
         group: this.state.group || "random",
         description: this.state.description,
         amount: parseFloat(this.state.amount, 10) * 100,
-        createdAt: this.state.createdAt.valueOf(),
-        note: this.state.note
+        createdAt: this.state.createdAt.valueOf()
       });
       if (
         this.state.group &&
@@ -93,7 +81,6 @@ class ExpenseForm extends React.Component {
       this.setState({
         group: "",
         description: "",
-        note: "",
         amount: ""
       });
     }
@@ -144,16 +131,11 @@ class ExpenseForm extends React.Component {
               false;
             }}
           />
-          <textarea
-            placeholder="Add a note for your expense (optional)"
-            value={this.state.note}
-            onChange={this.onNoteChange}
-          />
-          <button>Add Expense</button>
+          <button>Add Budget</button>
         </form>
       </div>
     );
   }
 }
 
-export default ExpenseForm;
+export default BudgetForm;
