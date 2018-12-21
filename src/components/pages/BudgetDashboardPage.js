@@ -1,7 +1,14 @@
 import React from "react";
+import BudgetList from "../BudgetList";
+import BudgetListFilters from "../BudgetListFilters";
 
 const BudgetDashboardPage = () => {
-  return <div>This is the dashboard page</div>;
+  return (
+    <div>
+      <BudgetListFilters />
+      <BudgetList />
+    </div>
+  );
 };
 
 export default BudgetDashboardPage;
