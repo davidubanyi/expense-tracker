@@ -24,7 +24,7 @@ export const ExpenseListItem = ({
       >
         Remove
       </button>
-      <Link to={`/editExpense/${id}`}>Edit</Link>
+      <Link to={`/edit_expense/${id}`}>Edit</Link>
     </div>
   );
 };

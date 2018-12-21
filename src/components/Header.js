@@ -1,17 +1,30 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
-const Header = () => {
+const pageTitle = {
+  expense: "Expenses",
+  add_expenses: "Add Expenses",
+  add_budget: "Add Budget",
+  budget: "Budgets"
+};
+
+const Header = props => {
   return (
     <header>
-      <h1>Expensify</h1>
-      <NavLink to="/expense" activeClassName="is-active" exact={true}>
+      <NavLink to="/" exact={true}>
+        <h1>
+          {props.location.pathname == "/"
+            ? "EXPENSE TRACKER"
+            : pageTitle[props.location.pathname.slice(1)] || "EXPENSE TRACKER"}
+        </h1>
+      </NavLink>
+      <NavLink to="/expense" activeClassName="is-active">
         ExpensesDashboard
       </NavLink>
-      <NavLink to="/createExpenses" activeClassName="is-active">
+      <NavLink to="/add_expenses" activeClassName="is-active">
         CreateExpenses
       </NavLink>
-      <NavLink to="/createBudget" activeClassName="is-active">
+      <NavLink to="/add_budget" activeClassName="is-active">
         CreateBudget
       </NavLink>
       <NavLink to="/budget" activeClassName="is-active">
@@ -21,4 +34,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
