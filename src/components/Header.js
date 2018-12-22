@@ -2,34 +2,41 @@ import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 
 const pageTitle = {
-  expense: "Expenses",
-  add_expenses: "Add Expenses",
-  add_budget: "Add Budget",
-  budget: "Budgets"
+  expense: "EXPENSES",
+  add_expenses: "ADD EXPENSES",
+  add_budget: "ADD BUDGET",
+  budget: "BUDGETS"
 };
 
 const Header = props => {
   return (
     <header>
-      <NavLink to="/" exact={true}>
-        <h1>
+      <div className="top-nav">
+        <p className="header-title">
           {props.location.pathname == "/"
             ? "EXPENSE TRACKER"
             : pageTitle[props.location.pathname.slice(1)] || "EXPENSE TRACKER"}
-        </h1>
-      </NavLink>
-      <NavLink to="/expense" activeClassName="is-active">
-        ExpensesDashboard
-      </NavLink>
-      <NavLink to="/add_expenses" activeClassName="is-active">
-        CreateExpenses
-      </NavLink>
-      <NavLink to="/add_budget" activeClassName="is-active">
-        CreateBudget
-      </NavLink>
-      <NavLink to="/budget" activeClassName="is-active">
-        ViewBudget
-      </NavLink>
+        </p>
+      </div>
+      <style jsx>{`
+        .top-nav {
+          background-color: white;
+          text-align: center;
+          border-bottom: 1px solid #49a833;
+        }
+        .header-title {
+          font-size: 1.5em;
+          color: #49a833;
+          text-decoration: none;
+          padding-bottom: 20px;
+          padding-top: 20px;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+        a {
+          text-decoration: none;
+        }
+      `}</style>
     </header>
   );
 };

@@ -16,7 +16,7 @@ export class AddExpensePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         <h1>Add Expense</h1>
         <ExpenseList />
         <ExpenseForm
@@ -24,7 +24,7 @@ export class AddExpensePage extends React.Component {
           categoryGroup={this.props.categories}
           addCategory={this.addCategory}
         />
-      </div>
+      </Layout>
     );
   }
 }

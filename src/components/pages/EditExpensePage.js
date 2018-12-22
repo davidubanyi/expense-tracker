@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ExpenseForm from "../ExpenseForm";
 import { editExpense, removeExpense } from "../../redux/actions/expenses";
+import Layout from "../Layout";
 
 export class EditExpensePage extends React.Component {
   onSubmit = expense => {
@@ -15,14 +16,14 @@ export class EditExpensePage extends React.Component {
   };
   render() {
     return (
-      <div>
+      <Layout>
         <ExpenseForm
           expense={this.props.expense}
           onSubmit={this.onSubmit}
           categoryGroup={this.props.categories}
         />
         <button onClick={this.onRemoveHandler}>Remove</button>
-      </div>
+      </Layout>
     );
   }
 }

@@ -4,6 +4,7 @@ import BudgetList from "../BudgetList";
 import { connect } from "react-redux";
 import { addBudget } from "../../redux/actions/budget";
 import { addCategory } from "../../redux/actions/category";
+import Layout from "../Layout";
 
 export class AddBudgetPage extends React.Component {
   onSubmit = budget => {
@@ -16,7 +17,7 @@ export class AddBudgetPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         <h1>Add Budget</h1>
         <BudgetList />
         <BudgetForm
@@ -24,7 +25,7 @@ export class AddBudgetPage extends React.Component {
           categoryGroup={this.props.categories}
           addCategory={this.addCategory}
         />
-      </div>
+      </Layout>
     );
   }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import BudgetForm from "../BudgetForm";
 import { editBudget, removeBudget } from "../../redux/actions/budget";
+import Layout from "../Layout";
 
 export class EditBudgetPage extends React.Component {
   onSubmit = budget => {
@@ -15,14 +16,14 @@ export class EditBudgetPage extends React.Component {
   };
   render() {
     return (
-      <div>
+      <Layout>
         <BudgetForm
           budget={this.props.budget}
           onSubmit={this.onSubmit}
           categoryGroup={this.props.categories}
         />
         <button onClick={this.onRemoveHandler}>Remove</button>
-      </div>
+      </Layout>
     );
   }
 }

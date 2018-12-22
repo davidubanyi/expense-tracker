@@ -18,3 +18,11 @@ button:disabled {
 .is-active {
   font-weight: bold;
 }
+
+.nav a {
+  text-decoration: none;
+  margin-top: 10px;
+  color: #006c00;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 5px;
+}
