@@ -6,16 +6,16 @@ const Layout = ({ children }) => {
     <div className="container">
       <div className="nav">
         <NavLink to="/expense" activeClassName="is-active">
-          ExpensesDashboard
-        </NavLink>
-        <NavLink to="/add_expenses" activeClassName="is-active">
-          CreateExpenses
-        </NavLink>
-        <NavLink to="/add_budget" activeClassName="is-active">
-          CreateBudget
+          💸 Expenses
         </NavLink>
         <NavLink to="/budget" activeClassName="is-active">
-          ViewBudget
+          ⚖️ Budget
+        </NavLink>
+        <NavLink to="/add_expenses" activeClassName="is-active">
+          💵 Add Expenses
+        </NavLink>
+        <NavLink to="/add_budget" activeClassName="is-active">
+          📆 Add Budget
         </NavLink>
       </div>
       {children}
@@ -32,8 +32,10 @@ const Layout = ({ children }) => {
             flex-direction: column;
             background: white;
             height: 300px;
-            margin: 40px;
-            padding: 30px;
+            margin: 50px;
+            padding: 50px 50px 50px 40px;
+            border: 1px solid green;
+            min-width: 150px;
           }
           .nav a {
             text-decoration: none;

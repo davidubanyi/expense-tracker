@@ -4,6 +4,7 @@ import ExpenseList from "../ExpenseList";
 import { connect } from "react-redux";
 import { addExpense } from "../../redux/actions/expenses";
 import { addCategory } from "../../redux/actions/category";
+import Layout from "../Layout";
 
 export class AddExpensePage extends React.Component {
   onSubmit = expense => {

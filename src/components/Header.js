@@ -2,10 +2,10 @@ import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 
 const pageTitle = {
-  expense: "EXPENSES",
-  add_expenses: "ADD EXPENSES",
-  add_budget: "ADD BUDGET",
-  budget: "BUDGETS"
+  expense: "Expenses",
+  add_expenses: "Add Expenses",
+  add_budget: "Add Budget",
+  budget: "Budgets"
 };
 
 const Header = props => {
