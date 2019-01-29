@@ -6,8 +6,20 @@ import Layout from "../Layout";
 const ExpenseDashboardPage = () => {
   return (
     <Layout>
-      <ExpenseListFilters />
-      <ExpenseList />
+      <div className="container">
+        <ExpenseList />
+        <ExpenseListFilters />
+      </div>
+      <style jsx>
+        {`
+          .container {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            margin-top: 50px;
+          }
+        `}
+      </style>
     </Layout>
   );
 };

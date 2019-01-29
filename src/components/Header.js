@@ -20,18 +20,27 @@ const Header = props => {
       </div>
       <style jsx>{`
         .top-nav {
-          background-color: white;
+          background-color: #484848;
           text-align: center;
           border-bottom: 1px solid #49a833;
+          display: flex;
+          justify-content: center;
+          padding: 15px 0px;
         }
         .header-title {
           font-size: 1.5em;
-          color: #49a833;
+          color: white;
+          -webkit-text-decoration: none;
           text-decoration: none;
-          padding-bottom: 20px;
-          padding-top: 20px;
+          padding: 8px 20px;
+          /* padding-top: 8px; */
           margin-top: 0;
           margin-bottom: 0;
+          border-bottom: 2px solid #49a833;
+          background: black;
+        }
+        .header-title p {
+          background: black;
         }
         a {
           text-decoration: none;

@@ -19,7 +19,7 @@ export class AddExpensePage extends React.Component {
     return (
       <Layout>
         <h1>Add Expense</h1>
-        <ExpenseList />
+        <ExpenseList addExpense />
         <ExpenseForm
           onSubmit={this.onSubmit}
           categoryGroup={this.props.categories}

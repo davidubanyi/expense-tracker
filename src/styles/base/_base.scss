@@ -7,8 +7,23 @@ body {
   font-size: $m-size;
 }
 
-button {
+.button-tags button {
   cursor: pointer;
+  background: white;
+  color: #2b770f;
+  padding: 5px 20px;
+  border-color: #11b511;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+select {
+  border-radius: 0;
+  color: black;
+  background: white;
+  height: 40px;
+  border: none;
+  border-color: lightgreen;
 }
 
 button:disabled {
