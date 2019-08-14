@@ -12,3 +12,4 @@ test("should render No Expenses when there is no expense", () => {
   const wrapper = shallow(<ExpenseList expenses={[]} />);
   expect(wrapper).toMatchSnapshot();
 });
+ 

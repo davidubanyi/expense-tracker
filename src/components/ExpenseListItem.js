@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import { removeExpense } from "../redux/actions/expenses";
 import { Link } from "react-router-dom";
+import numeral from "numeral"
 
 export const ExpenseListItem = ({
   dispatch,
@@ -20,7 +21,7 @@ export const ExpenseListItem = ({
         <span>{moment(createdAt).format("ddd, Do MMMM")}</span>
       </div>
       <div className="amount">
-        <h1>{amount}</h1>
+        <h1>{numeral(amount / 100).format('$0,0.00')}</h1>
         <button
           onClick={e => {
             dispatch(removeExpense(id));
