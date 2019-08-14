@@ -24,8 +24,9 @@ const Layout = ({ children }) => {
           .container {
             display: flex;
             flex-direction: row;
-            background: #f5fff9;
             height: 100vh;
+            max-width: 60%;
+            margin: 0 auto;
           }
           .nav {
             display: flex;

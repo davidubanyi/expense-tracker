@@ -40,6 +40,7 @@ export const ExpenseListItem = ({
             padding: 12px 15px;
             margin-bottom: 10px;
             box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+            min-width: 280px;
           }
           .details {
             margin-right: 40px;
