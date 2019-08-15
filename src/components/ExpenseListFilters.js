@@ -12,9 +12,13 @@ import { DateRangePicker } from "react-dates";
 
 export class ExpenseListFilters extends React.Component {
   state = {
-    calenderFocused: null
+    calenderFocused: null,
+    active: ""
   };
-
+  componentDidMount(){
+    this.props.setGroupFilter(this.state.active)
+    this.props.setTextFilter(this.state.active)
+  }
   onDatesChange = ({ startDate, endDate }) => {
     this.props.setStartDate(startDate);
     this.props.setEndDate(endDate);
@@ -39,10 +43,15 @@ export class ExpenseListFilters extends React.Component {
   };
 
   onCategoryClick = e => {
-    this.props.setGroupFilter(e.target.value);
+    const category = e.target.value
+    this.setState(()=>({
+      active: category
+    }))
+    this.props.setGroupFilter(category);
   };
 
   render() {
+    console.log(this.state.active)
     return (
       <div className="container">
         <input
@@ -52,12 +61,19 @@ export class ExpenseListFilters extends React.Component {
           placeholder="search"
         />
         <div className="button-tags">
-          <button onClick={this.onCategoryClick} value="">
+          <button
+            className={this.state.active === "" ? "active-button" : ""}
+            onClick={this.onCategoryClick}
+            value=""
+          >
             all
           </button>
           {this.props.categories.map(category => {
             return (
               <button
+                className={
+                  this.state.active === category ? "active-button" : ""
+                }
                 key={category}
                 value={category}
                 onClick={this.onCategoryClick}
@@ -98,6 +114,10 @@ export class ExpenseListFilters extends React.Component {
               padding: 0px 0px 5px 5px;
               margin-bottom: 20px;
               border: 0.2px solid lightgreen;
+            }
+            .active-button {
+              background: green;
+              color: white;
             }
 
             input {

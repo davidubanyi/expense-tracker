@@ -17,7 +17,14 @@ body {
   border-color: #11b511;
   margin-right: 5px;
   margin-top: 5px;
+
+  .active-button {
+    background: green;
+    color: white;
+  }
 }
+
+
 
 select {
   border-radius: 0;
