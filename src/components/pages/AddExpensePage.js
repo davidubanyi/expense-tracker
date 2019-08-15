@@ -9,7 +9,7 @@ import Layout from "../Layout";
 export class AddExpensePage extends React.Component {
   onSubmit = expense => {
     this.props.addExpense(expense);
-    // this.props.history.push("/");
+    this.props.history.push("add_expenses");
   };
   addCategory = category => {
     this.props.addCategory(category);

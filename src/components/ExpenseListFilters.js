@@ -51,7 +51,6 @@ export class ExpenseListFilters extends React.Component {
   };
 
   render() {
-    console.log(this.state.active)
     return (
       <div className="container">
         <input
