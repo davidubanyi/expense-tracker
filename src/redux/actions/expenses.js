@@ -35,3 +35,26 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+
+//SET EXPENSES
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+})
+
+//Start Set Expenses
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    return db.collection('expenses').get().then(function(querySnapshot){
+      const expenses = []
+      querySnapshot.forEach((doc)=>{
+        const data = doc.data()
+        expenses.push({
+          id: doc.id,
+          ...data
+        })
+      })
+      dispatch(setExpenses(expenses))
+    })
+  }
+}
