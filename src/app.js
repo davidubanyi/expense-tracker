@@ -4,12 +4,12 @@ import AppRouter from "./routers/AppRouter";
 import configureStore from "./redux/store/configureStore";
 import { Provider } from "react-redux";
 import numeral from "numeral";
-import './firebase/firebase'
+import "./firebase/firebase";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
 import { startSetExpenses } from "./redux/actions/expenses";
-
+import { startSetCategories } from "./redux/actions/category";
 
 numeral.register("locale", "ngn", {
   delimiters: {
@@ -49,9 +49,13 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+ReactDOM.render(<p>Loading...</p>, document.getElementById("app"));
 
-store.dispatch(startSetExpenses()).then(()=>{
-  ReactDOM.render(jsx, document.getElementById("app"));
-})
-
+store
+  .dispatch(startSetExpenses())
+  .then(() => {
+    store.dispatch(startSetCategories());
+  })
+  .then(() => {
+    ReactDOM.render(jsx, document.getElementById("app"));
+  });
