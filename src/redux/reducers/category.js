@@ -10,6 +10,8 @@ export default (state = categoryDefaultState, action) => {
         category => category != action.categoryGroup
       );
       return remState;
+    case "SET_CATEGORIES":
+      return action.categoryGroup
     default:
       return state;
   }

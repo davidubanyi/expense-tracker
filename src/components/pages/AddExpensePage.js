@@ -4,7 +4,7 @@ import ExpenseForm from "../ExpenseForm";
 import ExpenseListItem from "../ExpenseListItem";
 import { connect } from "react-redux";
 import { startAddExpense } from "../../redux/actions/expenses";
-import { addCategory } from "../../redux/actions/category";
+import { startAddCategory } from "../../redux/actions/category";
 import Layout from "../Layout";
 
 export class AddExpensePage extends React.Component {
@@ -24,8 +24,8 @@ export class AddExpensePage extends React.Component {
     );
     // this.props.history.push("add_expenses");
   };
-  addCategory = category => {
-    this.props.addCategory(category);
+  startAddCategory = category => {
+    this.props.startAddCategory(category);
   };
 
   render() {
@@ -45,7 +45,7 @@ export class AddExpensePage extends React.Component {
         <ExpenseForm
           onSubmit={this.onSubmit}
           categoryGroup={this.props.categories}
-          addCategory={this.addCategory}
+          addCategory={this.startAddCategory}
         />
       </Layout>
     );
@@ -54,7 +54,7 @@ export class AddExpensePage extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   startAddExpense: expense => dispatch(startAddExpense(expense)),
-  addCategory: category => dispatch(addCategory(category))
+  startAddCategory: category => dispatch(startAddCategory(category))
 });
 
 const mapStateToProps = state => ({

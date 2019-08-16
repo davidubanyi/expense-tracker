@@ -29,12 +29,30 @@ export const removeExpense = id => ({
   type: "REMOVE_EXPENSE",
   id
 });
+
+export const startRemoveExpense = (id) => {
+  return dispatch => {
+     db.collection("expenses").doc(id).delete().then(function(){
+      dispatch(removeExpense(id))
+    })
+  }
+}
+
+
 //EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
   type: "EDIT_EXPENSE",
   id,
   updates
 });
+
+export const startEditExpense = (id, updates) => {
+  return dispatch => {
+    db.collection("expenses").doc(id).update(updates).then(()=> {
+      dispatch(editExpense(id, updates))
+    })
+  }
+}
 
 //SET EXPENSES
 export const setExpenses = (expenses) => ({
