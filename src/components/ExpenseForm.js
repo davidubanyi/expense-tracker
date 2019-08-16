@@ -100,7 +100,7 @@ class ExpenseForm extends React.Component {
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
-        {this.state.categories.map(category => {
+        {this.props.categoryGroup.map(category => {
           return (
             <button
               key={category}
