@@ -15,11 +15,4 @@ const firebaseConfig = {
 
   const db = firebase.firestore()
 
-  db.collection('users').doc('user_details').set({
-      first: "david",
-      last: "ubanyi",
-      phoneNumber: "08102906281",
-      location: "Nigeria",
-  }).then (function(docRef){
-      console.log("document written with ")
-  })
+  export {firebase, db as default}

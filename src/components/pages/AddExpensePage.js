@@ -3,7 +3,7 @@ import { CSSTransitionGroup } from "react-transition-group";
 import ExpenseForm from "../ExpenseForm";
 import ExpenseListItem from "../ExpenseListItem";
 import { connect } from "react-redux";
-import { addExpense } from "../../redux/actions/expenses";
+import { startAddExpense } from "../../redux/actions/expenses";
 import { addCategory } from "../../redux/actions/category";
 import Layout from "../Layout";
 
@@ -12,7 +12,7 @@ export class AddExpensePage extends React.Component {
     latestExpense: null
   };
   onSubmit = expense => {
-    this.props.addExpense(expense);
+    this.props.startAddExpense(expense);
     this.setState(() => ({
       latestExpense: expense
     }));
@@ -53,7 +53,7 @@ export class AddExpensePage extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addExpense: expense => dispatch(addExpense(expense)),
+  startAddExpense: expense => dispatch(startAddExpense(expense)),
   addCategory: category => dispatch(addCategory(category))
 });
 
