@@ -1,4 +1,5 @@
 import db from "../../firebase/firebase";
+import uuid from 'uuid'
 
 //ADD_EXPENSE
 export const addExpense = expense => ({
@@ -17,10 +18,12 @@ export const startAddExpense = (expenseData = {}) => {
     } = expenseData;
 
     const expense = { group, description, note, amount, createdAt };
+    const id = uuid()
+    dispatch(addExpense({ id: id, ...expense }));
     db.collection("expenses")
-      .add(expense)
-      .then(docRef => {
-        dispatch(addExpense({ id: docRef.id, ...expense }));
+      .doc(id).set(expense)
+      .then(() => {
+        console.log('added to db successfully')
       });
   };
 };
@@ -32,8 +35,9 @@ export const removeExpense = id => ({
 
 export const startRemoveExpense = (id) => {
   return dispatch => {
+    dispatch(removeExpense(id))
      db.collection("expenses").doc(id).delete().then(function(){
-      dispatch(removeExpense(id))
+      console.log('deleted successfully from db')
     })
   }
 }
@@ -48,8 +52,9 @@ export const editExpense = (id, updates) => ({
 
 export const startEditExpense = (id, updates) => {
   return dispatch => {
+    dispatch(editExpense(id, updates))
     db.collection("expenses").doc(id).update(updates).then(()=> {
-      dispatch(editExpense(id, updates))
+      console.log('edited from the db successfully')
     })
   }
 }

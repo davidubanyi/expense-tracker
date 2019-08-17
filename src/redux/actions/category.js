@@ -8,10 +8,11 @@ export const addCategory = categoryGroup => ({
 export const startAddCategory = (categoryGroup = "random") => {
   return dispatch => {
     const category = { groupName: categoryGroup };
+    dispatch(addCategory(categoryGroup));
     db.collection("groups")
       .add(category)
       .then(() => {
-        dispatch(addCategory(categoryGroup));
+        console.log('group added worked')
       });
   };
 };
