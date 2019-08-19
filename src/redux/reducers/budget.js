@@ -15,6 +15,8 @@ export default (state = budgetReducerDefaultState, action) => {
           return budget;
         }
       });
+    case "SET_BUDGET":
+      return action.budgets
     default:
       return state;
   }

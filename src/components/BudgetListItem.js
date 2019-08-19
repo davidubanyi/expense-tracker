@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeBudget } from "../redux/actions/budget";
+import { startRemoveBudget } from "../redux/actions/budget";
 import { Link } from "react-router-dom";
 
 export const BudgetListItem = ({
@@ -19,7 +19,7 @@ export const BudgetListItem = ({
       </p>
       <button
         onClick={e => {
-          dispatch(removeBudget(id));
+          dispatch(startRemoveBudget(id));
         }}
       >
         Remove

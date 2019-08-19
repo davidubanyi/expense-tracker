@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import BudgetForm from "../BudgetForm";
-import { editBudget, removeBudget } from "../../redux/actions/budget";
+import { startEditBudget, startRemoveBudget } from "../../redux/actions/budget";
 import Layout from "../Layout";
 
 export class EditBudgetPage extends React.Component {
   onSubmit = budget => {
-    this.props.editBudget(this.props.budget.id, budget);
+    this.props.startEditBudget(this.props.budget.id, budget);
     this.props.history.push("/budget");
   };
 
   onRemoveHandler = () => {
-    this.props.removeBudget(this.props.budget.id);
+    this.props.startRemoveBudget(this.props.budget.id);
     this.props.history.push("/");
   };
   render() {
@@ -39,8 +39,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editBudget: (id, budget) => dispatch(editBudget(id, budget)),
-    removeBudget: id => dispatch(removeBudget(id))
+    startEditBudget: (id, budget) => dispatch(startEditBudget(id, budget)),
+    startRemoveBudget: id => dispatch(startRemoveBudget(id))
   };
 };
 export default connect(
