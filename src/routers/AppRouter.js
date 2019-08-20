@@ -9,7 +9,8 @@ import NotFoundPage from "../components/pages/NotFoundPage";
 import AddBudgetPage from "../components/pages/AddBudgetPage";
 import BudgetDashboardPage from "../components/pages/BudgetDashboardPage";
 import EditBudgetPage from "../components/pages/EditBudgetPage";
-import HomePage from "../components/pages/HomePage";
+import LoginPage from "../components/pages/LoginPage";
+import DashboardPage from '../components/pages/DashboardPage'
 
 const AppRouter = () => {
   return (
@@ -17,7 +18,8 @@ const AppRouter = () => {
       <div>
         <Header />
         <Switch>
-          <Route path="/" component={HomePage} exact={true} />
+          <Route path="/" component={LoginPage} exact={true} />
+          <Route path="/dashboard" component={DashboardPage} />
           <Route path="/expense" component={ExpenseDashboardPage} />
           <Route path="/budget" component={BudgetDashboardPage} />
           <Route path="/add_expenses" component={AddExpensePage} />
