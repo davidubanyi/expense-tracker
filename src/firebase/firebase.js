@@ -27,5 +27,7 @@ const firebaseConfig = {
   });
 
   const db = firebase.firestore()
+  const emailAuthProvider = new firebase.auth.EmailAuthProvider()
+  const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
 
-  export {firebase, db as default}
+  export {firebase, emailAuthProvider, googleAuthProvider, db as default}
