@@ -17,6 +17,7 @@ const Header = props => {
             ? "EXPENSE TRACKER"
             : pageTitle[props.location.pathname.slice(1)] || "EXPENSE TRACKER"}
         </p>
+        {<div>Welcome, {}</div>}
       </div>
       <style jsx>{`
         .top-nav {

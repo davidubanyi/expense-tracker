@@ -6,10 +6,12 @@ import {firebase} from "../../firebase/firebase"
 const uiConfig = {
   signInFlow: 'redirect',
   signInSuccessUrl: '/expense',
+  'credentialHelper':  'none',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD
   ]
+ 
 }
 
 

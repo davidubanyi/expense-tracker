@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import ExpenseForm from "../ExpenseForm";
 import { startEditExpense, startRemoveExpense } from "../../redux/actions/expenses";
 import Layout from "../Layout";
+import {toast, Flip} from 'react-toastify'
 
 export class EditExpensePage extends React.Component {
   onSubmit = expense => {
     this.props.startEditExpense(this.props.expense.id, expense);
+    this.notify()
     this.props.history.push("/expense");
   };
 
@@ -14,6 +16,9 @@ export class EditExpensePage extends React.Component {
     this.props.startRemoveExpense(this.props.expense.id);
     this.props.history.push("/");
   };
+  notify = () => toast.success('Edited Expense', {
+    position: toast.POSITION.TOP_CENTER,
+    transition: Flip})
   render() {
     return (
       <Layout>

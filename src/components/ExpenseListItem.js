@@ -4,6 +4,7 @@ import moment from "moment";
 import { startRemoveExpense } from "../redux/actions/expenses";
 import { Link } from "react-router-dom";
 import numeral from "numeral"
+import { toast, Slide, Flip } from "react-toastify";
 
 export const ExpenseListItem = ({
   dispatch,
@@ -13,6 +14,10 @@ export const ExpenseListItem = ({
   createdAt,
   id
 }) => {
+  const notify = () => toast.warn('Deleted Expense', {
+    position: toast.POSITION.TOP_CENTER,
+    transition: Flip
+  })
   return (
     <div className="container">
       <div className="details">
@@ -24,6 +29,7 @@ export const ExpenseListItem = ({
         <h1>{numeral(amount / 100).format('$0,0.00')}</h1>
         <button
           onClick={e => {
+            notify()
             dispatch(startRemoveExpense(id));
           }}
         >

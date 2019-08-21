@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import firebase from 'firebase'
 
 const Layout = ({ children }) => {
   return (
@@ -17,6 +18,9 @@ const Layout = ({ children }) => {
         <NavLink to="/add_budget" activeClassName="is-active">
           📆 Add Budget
         </NavLink>
+        <a  onClick={() => firebase.auth().signOut()}>
+          🚪 Log Out
+        </a>
       </div>
       {children}
       <style jsx>
@@ -41,6 +45,7 @@ const Layout = ({ children }) => {
           .nav a {
             text-decoration: none;
             margin-top: 10px;
+            cursor: pointer;
           }
         `}
       </style>
