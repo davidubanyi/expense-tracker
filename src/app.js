@@ -10,6 +10,7 @@ import "react-dates/lib/css/_datepicker.css";
 import { startSetExpenses } from "./redux/actions/expenses";
 import { startSetCategories } from "./redux/actions/category";
 import { startSetBudget } from "./redux/actions/budget";
+import {login, logout} from './redux/actions/auth'
 import "./helpers/CurrencyHelper";
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -34,6 +35,7 @@ const renderApp = () => {
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
+    store.dispatch(login(user.uid))
     ReactDOM.render(<p>Loading...</p>, document.getElementById("app"));
     store
       .dispatch(startSetExpenses())
@@ -50,6 +52,7 @@ firebase.auth().onAuthStateChanged(user => {
         }
       });
   } else {
+    store.dispatch(logout())
     renderApp();
     history.push("/");
   }

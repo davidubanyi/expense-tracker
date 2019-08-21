@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
+import {firebase} from '../firebase/firebase'
 
 const pageTitle = {
   expense: "Expenses",
@@ -7,6 +8,8 @@ const pageTitle = {
   add_budget: "Add Budget",
   budget: "Budgets"
 };
+
+const user = firebase.auth().currentUser
 
 const Header = props => {
   return (
@@ -17,7 +20,7 @@ const Header = props => {
             ? "EXPENSE TRACKER"
             : pageTitle[props.location.pathname.slice(1)] || "EXPENSE TRACKER"}
         </p>
-        {<div>Welcome, {}</div>}
+        {user && <div>Welcome, {user.displayName}</div>}
       </div>
       <style jsx>{`
         .top-nav {
@@ -45,6 +48,9 @@ const Header = props => {
         }
         a {
           text-decoration: none;
+        }
+        .welcome {
+          color: white;
         }
       `}</style>
     </header>

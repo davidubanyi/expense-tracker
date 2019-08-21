@@ -8,7 +8,8 @@ export const addBudget = budget => ({
 });
 
 export const startAddBudget = (budgetData = {}) => {
-  return dispatch => {
+  return (dispatch,getState) => {
+    const uid = getState().auth.uid
     const {
       group = "",
       description = "",
@@ -20,7 +21,7 @@ export const startAddBudget = (budgetData = {}) => {
     const id = uuid();
 
     dispatch(addBudget({ id, ...budget }));
-    db.collection("budgets")
+    db.collection(`users/${uid}/budgets`)
       .doc(id)
       .set(budget)
       .then(() => {
@@ -36,9 +37,10 @@ export const removeBudget = id => ({
 });
 
 export const startRemoveBudget = (id) => {
-  return dispatch => {
+  return (dispatch,getState) => {
+    const uid = getState().auth.uid
     dispatch(removeBudget(id))
-     db.collection("budgets").doc(id).delete().then(function(){
+     db.collection(`users/${uid}/budgets`).doc(id).delete().then(function(){
       console.log('deleted successfully from db')
     })
   }
@@ -54,9 +56,10 @@ export const editBudget = (id, updates) => ({
 
 
 export const startEditBudget = (id, updates) => {
-  return dispatch => {
+  return (dispatch,getState) => {
+    const uid = getState().auth.uid
     dispatch(editBudget(id, updates))
-    db.collection("budgets").doc(id).update(updates).then(()=> {
+    db.collection(`users/${uid}/budgets`).doc(id).update(updates).then(()=> {
       console.log('edited from the db successfully')
     })
   }
@@ -70,8 +73,9 @@ export const setBudget = (budgets) => ({
 
 //Start Set Expenses
 export const startSetBudget = () => {
-  return (dispatch) => {
-    return db.collection('budgets').get().then(function(querySnapshot){
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
+    return db.collection(`users/${uid}/budgets`).get().then(function(querySnapshot){
       const budgets = []
       querySnapshot.forEach((doc)=>{
         const data = doc.data()

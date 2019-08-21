@@ -4,7 +4,7 @@ import moment from "moment";
 import { startRemoveExpense } from "../redux/actions/expenses";
 import { Link } from "react-router-dom";
 import numeral from "numeral"
-import { toast, Slide, Flip } from "react-toastify";
+import { toast, Flip } from "react-toastify";
 
 export const ExpenseListItem = ({
   dispatch,

@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import firebase from 'firebase'
+import {startLogout} from '../redux/actions/auth'
+import {connect} from 'react-redux'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, dispatch }) => {
   return (
     <div className="container">
       <div className="nav">
@@ -18,7 +19,7 @@ const Layout = ({ children }) => {
         <NavLink to="/add_budget" activeClassName="is-active">
           📆 Add Budget
         </NavLink>
-        <a  onClick={() => firebase.auth().signOut()}>
+        <a  onClick={() => dispatch(startLogout())}>
           🚪 Log Out
         </a>
       </div>
@@ -53,4 +54,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default connect()(Layout);

@@ -6,10 +6,11 @@ export const addCategory = categoryGroup => ({
 });
 
 export const startAddCategory = (categoryGroup = "random") => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
     const category = { groupName: categoryGroup };
     dispatch(addCategory(categoryGroup));
-    db.collection("groups")
+    db.collection(`users/${uid}/groups`)
       .add(category)
       .then(() => {
         console.log('group added worked')
@@ -29,9 +30,10 @@ export const setCategories = categoryGroup => ({
 
 //Start Set Categories
 export const startSetCategories = () => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
     return db
-      .collection("groups")
+      .collection(`users/${uid}/groups`)
       .get()
       .then(querySnapshot => {
         const categories = [];
@@ -43,7 +45,7 @@ export const startSetCategories = () => {
         categories.map(category => {
           return categoriesGroup.push(category.groupName);
         });
-        dispatch(setCategories(categoriesGroup));
+        dispatch(setCategories(['airtime', 'transportation', 'food', 'clothing',...categoriesGroup]));
       });
   };
 };

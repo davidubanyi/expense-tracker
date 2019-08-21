@@ -8,7 +8,8 @@ export const addExpense = expense => ({
 });
 
 export const startAddExpense = (expenseData = {}) => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
     const {
       group = "",
       description = "",
@@ -20,7 +21,7 @@ export const startAddExpense = (expenseData = {}) => {
     const expense = { group, description, note, amount, createdAt };
     const id = uuid()
     dispatch(addExpense({ id: id, ...expense }));
-    db.collection("expenses")
+    db.collection(`users/${uid}/expenses`)
       .doc(id).set(expense)
       .then(() => {
         console.log('added to db successfully')
@@ -34,9 +35,10 @@ export const removeExpense = id => ({
 });
 
 export const startRemoveExpense = (id) => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
     dispatch(removeExpense(id))
-     db.collection("expenses").doc(id).delete().then(function(){
+     db.collection(`users/${uid}/expenses`).doc(id).delete().then(function(){
       console.log('deleted successfully from db')
     })
   }
@@ -51,9 +53,10 @@ export const editExpense = (id, updates) => ({
 });
 
 export const startEditExpense = (id, updates) => {
-  return dispatch => {
+  return( dispatch, getState) => {
+    const uid = getState().auth.uid
     dispatch(editExpense(id, updates))
-    db.collection("expenses").doc(id).update(updates).then(()=> {
+    db.collection(`users/${uid}/expenses`).doc(id).update(updates).then(()=> {
       console.log('edited from the db successfully')
     })
   }
@@ -67,8 +70,9 @@ export const setExpenses = (expenses) => ({
 
 //Start Set Expenses
 export const startSetExpenses = () => {
-  return (dispatch) => {
-    return db.collection('expenses').get().then(function(querySnapshot){
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
+    return db.collection(`users/${uid}/expenses`).get().then(function(querySnapshot){
       const expenses = []
       querySnapshot.forEach((doc)=>{
         const data = doc.data()
