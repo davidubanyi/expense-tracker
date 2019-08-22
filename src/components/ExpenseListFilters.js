@@ -52,8 +52,9 @@ export class ExpenseListFilters extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="list-filters--container">
         <input
+        id="search"
           type="text"
           value={this.props.filters.text}
           onChange={this.onTextInputChange}
@@ -98,69 +99,7 @@ export class ExpenseListFilters extends React.Component {
           numberOfMonths={1}
           isOutsideRange={() => false}
         />
-        <style jsx>
-          {`
-            .container {
-              display: flex;
-              flex-direction: column;
-              position: relative;
-              max-width: 400px;
-              align-content: center;
-              margin-left: 50px;
-            }
-            .button-tags {
-              background-color: white;
-              padding: 0px 0px 5px 5px;
-              margin-bottom: 20px;
-              border: 0.2px solid lightgreen;
-            }
-            .active-button {
-              background: green;
-              color: white;
-            }
-
-            input {
-              outline: none;
-            }
-            input[type="text"] {
-              -webkit-appearance: textfield;
-              -webkit-box-sizing: content-box;
-              font-family: inherit;
-              font-size: 100%;
-            }
-            input::-webkit-search-decoration,
-            input::-webkit-search-cancel-button {
-              display: none;
-            }
-
-            input[type="text"] {
-              background: white
-                url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png)
-                no-repeat 9px center;
-              border: solid 1px lightgreen;
-              padding: 9px 10px 9px 32px;
-              width: 55px;
-
-              -webkit-transition: all 0.5s;
-              -moz-transition: all 0.5s;
-              transition: all 0.5s;
-              margin-bottom: 20px;
-            }
-            input[type="text"]:focus {
-              width: 130px;
-              background-color: #fff;
-              border-color: lightgreen;
-
-              -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
-              -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
-              box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
-            }
-            select {
-              margin-bottom: 20px;
-              border-radius: 0;
-            }
-          `}
-        </style>
+        
       </div>
     );
   }

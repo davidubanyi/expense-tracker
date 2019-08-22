@@ -11,15 +11,13 @@ const pageTitle = {
 
 const Header = props => {
   return (
-    <header>
-      <div className="top-nav">
+     <header>
+      {props.location.pathname=='/' ? '' : <div className="top-nav">
         <p className="header-title">
-          {props.location.pathname == "/"
-            ? "EXPENSE TRACKER"
-            : pageTitle[props.location.pathname.slice(1)] || "EXPENSE TRACKER"}
+          { pageTitle[props.location.pathname.slice(1)] || "EXPENSE TRACKER"}
         </p>
         {props.auth.displayName && <div className="welcome">Welcome, {props.auth.displayName}</div>}
-      </div>
+      </div>}
       <style jsx>{`
         .top-nav {
           background-color: #484848;

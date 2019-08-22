@@ -1,0 +1,25 @@
+.layout--container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    max-width: 60%;
+    margin: 0 auto;
+  }
+  .layout--nav {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    height: 300px;
+    padding: 50px 50px 50px 40px;
+    border: 1px solid green;
+    min-width: 150px;
+    margin-top: 50px;
+    margin-right: 50px;
+    
+  }
+  .layout--nav a {
+    text-decoration: none;
+    margin-top: 20px;
+    cursor: pointer;
+    color: green;
+  }

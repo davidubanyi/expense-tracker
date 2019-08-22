@@ -5,8 +5,8 @@ import {connect} from 'react-redux'
 
 const Layout = ({ children, dispatch }) => {
   return (
-    <div className="container">
-      <div className="nav">
+    <div className="layout--container">
+      <div className="layout--nav">
         <NavLink to="/expense" activeClassName="is-active">
           💸 Expenses
         </NavLink>
@@ -24,32 +24,6 @@ const Layout = ({ children, dispatch }) => {
         </a>
       </div>
       {children}
-      <style jsx>
-        {`
-          .container {
-            display: flex;
-            flex-direction: row;
-            height: 100vh;
-            max-width: 60%;
-            margin: 0 auto;
-          }
-          .nav {
-            display: flex;
-            flex-direction: column;
-            background: white;
-            height: 300px;
-            margin: 50px;
-            padding: 50px 50px 50px 40px;
-            border: 1px solid green;
-            min-width: 150px;
-          }
-          .nav a {
-            text-decoration: none;
-            margin-top: 10px;
-            cursor: pointer;
-          }
-        `}
-      </style>
     </div>
   );
 };

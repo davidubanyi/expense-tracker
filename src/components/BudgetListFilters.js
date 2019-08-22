@@ -10,10 +10,16 @@ import {
 } from "../redux/actions/filters";
 import { DateRangePicker } from "react-dates";
 
-export class ExpenseListFilters extends React.Component {
+export class BudgetListFilters extends React.Component {
   state = {
-    calenderFocused: null
+    calenderFocused: null,
+    active: ""
   };
+
+  componentDidMount(){
+    this.props.setGroupFilter(this.state.active)
+    this.props.setTextFilter(this.state.active)
+  }
 
   onDatesChange = ({ startDate, endDate }) => {
     this.props.setStartDate(startDate);
@@ -39,31 +45,47 @@ export class ExpenseListFilters extends React.Component {
   };
 
   onCategoryClick = e => {
-    this.props.setGroupFilter(e.target.value);
+    const category = e.target.value
+    this.setState(()=>({
+      active: category
+    }))
+    this.props.setGroupFilter(category);
+  
   };
 
   render() {
     return (
-      <div>
-        <button onClick={this.onCategoryClick} value="">
-          all
-        </button>
-        {this.props.categories.map(category => {
-          return (
-            <button
-              key={category}
-              value={category}
-              onClick={this.onCategoryClick}
-            >
-              {category}
-            </button>
-          );
-        })}
+      <div className="list-filters--container">
         <input
+        id="search"
           type="text"
           value={this.props.filters.text}
           onChange={this.onTextInputChange}
+          placeholder="search"
         />
+        <div className="button-tags">
+          <button
+            className={this.state.active === "" ? "active-button" : ""}
+            onClick={this.onCategoryClick}
+            value=""
+          >
+            all
+          </button>
+          {this.props.categories.map(category => {
+            return (
+              <button
+                className={
+                  this.state.active === category ? "active-button" : ""
+                }
+                key={category}
+                value={category}
+                onClick={this.onCategoryClick}
+              >
+                {category}
+              </button>
+            );
+          })}
+        </div>
         <select onChange={this.onSelectInputChange}>
           <option value="date">Date</option>
           <option value="amount">Amount</option>
@@ -80,6 +102,7 @@ export class ExpenseListFilters extends React.Component {
           numberOfMonths={1}
           isOutsideRange={() => false}
         />
+        
       </div>
     );
   }
@@ -102,4 +125,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ExpenseListFilters);
+)(BudgetListFilters);

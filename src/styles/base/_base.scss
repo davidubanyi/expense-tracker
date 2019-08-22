@@ -62,9 +62,10 @@ button:disabled {
 }
 
 .is-active {
-  border: 1px solid green;
+  border-left: 2px solid green;
   border-radius: 3px;
-  padding: 5px;
+  padding:8px 0px 8px 10px;
+  background: rgba(129, 255, 150, 0.303);
 }
 
 .nav a {

@@ -9,9 +9,9 @@ const BudgetsSummary = ({ budgetCount, budgetsTotal }) => {
   const formattedBudgetsTotal = numeral(budgetsTotal/100).format("$0,0.00");
   return (
     <div>
-      <h1>
+      <h3>
         Viewing {budgetCount} {budgetWord} totalling {formattedBudgetsTotal}
-      </h1>
+      </h3>
     </div>
   );
 };

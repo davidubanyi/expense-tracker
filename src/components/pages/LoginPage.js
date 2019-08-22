@@ -4,7 +4,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import {firebase} from "../../firebase/firebase"
 
 const uiConfig = {
-  signInFlow: 'redirect',
+  signInFlow: 'popup',
   signInSuccessUrl: '/expense',
   'credentialHelper':  'none',
   signInOptions: [
