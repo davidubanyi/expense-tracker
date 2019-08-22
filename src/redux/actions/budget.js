@@ -23,7 +23,7 @@ export const startAddBudget = (budgetData = {}) => {
     dispatch(addBudget({ id, ...budget }));
     db.collection(`users/${uid}/budgets`)
       .doc(id)
-      .set(budget)
+      .set({userId: uid,...budget})
       .then(() => {
         console.log("added to the db successfully");
       });
@@ -75,7 +75,7 @@ export const setBudget = (budgets) => ({
 export const startSetBudget = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid
-    return db.collection(`users/${uid}/budgets`).get().then(function(querySnapshot){
+    return db.collection(`users/${uid}/budgets`).where('userId', '==', uid).get().then(function(querySnapshot){
       const budgets = []
       querySnapshot.forEach((doc)=>{
         const data = doc.data()

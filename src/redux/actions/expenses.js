@@ -22,7 +22,7 @@ export const startAddExpense = (expenseData = {}) => {
     const id = uuid()
     dispatch(addExpense({ id: id, ...expense }));
     db.collection(`users/${uid}/expenses`)
-      .doc(id).set(expense)
+      .doc(id).set({userId: uid, ...expense})
       .then(() => {
         console.log('added to db successfully')
       });
@@ -72,7 +72,8 @@ export const setExpenses = (expenses) => ({
 export const startSetExpenses = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid
-    return db.collection(`users/${uid}/expenses`).get().then(function(querySnapshot){
+    console.log(uid)
+    return db.collection(`users/${uid}/expenses`).where('userId', '==', uid).get().then(function(querySnapshot){
       const expenses = []
       querySnapshot.forEach((doc)=>{
         const data = doc.data()

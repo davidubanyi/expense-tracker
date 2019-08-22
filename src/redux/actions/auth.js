@@ -1,8 +1,8 @@
 import {firebase} from '../../firebase/firebase'
 
-export const login = (uid) => ({
+export const login = (userDetails={}) => ({
     type: 'LOGIN',
-    uid
+    userDetails
 })
 
 export const logout = () =>({

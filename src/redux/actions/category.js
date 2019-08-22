@@ -11,7 +11,7 @@ export const startAddCategory = (categoryGroup = "random") => {
     const category = { groupName: categoryGroup };
     dispatch(addCategory(categoryGroup));
     db.collection(`users/${uid}/groups`)
-      .add(category)
+      .add({userId: uid, ...category})
       .then(() => {
         console.log('group added worked')
       });
@@ -33,7 +33,7 @@ export const startSetCategories = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid
     return db
-      .collection(`users/${uid}/groups`)
+      .collection(`users/${uid}/groups`).where('userId', '==', uid)
       .get()
       .then(querySnapshot => {
         const categories = [];

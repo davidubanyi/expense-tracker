@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
-import {firebase} from '../firebase/firebase'
+import {connect} from 'react-redux'
 
 const pageTitle = {
   expense: "Expenses",
@@ -8,8 +8,6 @@ const pageTitle = {
   add_budget: "Add Budget",
   budget: "Budgets"
 };
-
-const user = firebase.auth().currentUser
 
 const Header = props => {
   return (
@@ -20,7 +18,7 @@ const Header = props => {
             ? "EXPENSE TRACKER"
             : pageTitle[props.location.pathname.slice(1)] || "EXPENSE TRACKER"}
         </p>
-        {user && <div>Welcome, {user.displayName}</div>}
+        {props.auth.displayName && <div className="welcome">Welcome, {props.auth.displayName}</div>}
       </div>
       <style jsx>{`
         .top-nav {
@@ -28,8 +26,9 @@ const Header = props => {
           text-align: center;
           border-bottom: 1px solid #49a833;
           display: flex;
-          justify-content: center;
+          justify-content: space-around;
           padding: 15px 0px;
+          align-items: center;
         }
         .header-title {
           font-size: 1.5em;
@@ -57,4 +56,11 @@ const Header = props => {
   );
 };
 
-export default withRouter(Header);
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  };
+};
+
+
+export default withRouter(connect(mapStateToProps)(Header))
