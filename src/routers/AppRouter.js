@@ -1,6 +1,5 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
 import Header from "../components/Header";
 import ExpenseDashboardPage from "../components/pages/ExpenseDashboardPage";
 import AddExpensePage from "../components/pages/AddExpensePage";
@@ -13,7 +12,8 @@ import EditBudgetPage from "../components/pages/EditBudgetPage";
 import LoginPage from "../components/pages/LoginPage";
 import DashboardPage from "../components/pages/DashboardPage";
 
-export const history = createHistory();
+const createHistory = require("history").createBrowserHistory
+export const history =  createHistory();
 
 const AppRouter = () => {
   return (

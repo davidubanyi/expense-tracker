@@ -14,7 +14,7 @@ class BudgetForm extends React.Component {
       createdAt: props.budget ? moment(props.budget.createdAt) : moment(),
       categories: props.categoryGroup,
       calenderFocused: false,
-      error: ""
+      error: "",
     };
   }
 
@@ -58,10 +58,17 @@ class BudgetForm extends React.Component {
   };
   onSubmit = e => {
     e.preventDefault();
+    const categoryChecker = this.props.budgets.find((element)=> 
+    {
+      return element.group == this.state.group})
     if (!this.state.description || !this.state.amount) {
       this.setState(() => ({
         error: "Please fill in the description and amount fields"
       }));
+    } else if(categoryChecker){
+      this.setState(()=>({
+        error: "You already have a budget for this Category"
+      }))
     } else {
       this.setState(() => ({
         error: ""
@@ -90,7 +97,7 @@ class BudgetForm extends React.Component {
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
-        {this.state.categories.map(category => {
+        {this.props.categoryGroup.map(category => {
           return (
             <button
               key={category}

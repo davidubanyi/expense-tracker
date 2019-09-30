@@ -6,7 +6,9 @@ import selectExpensesTotal from "../redux/selectors/expenses-total";
 
 const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
   const expenseWord = expenseCount === 1 ? "expense" : "expenses";
-  const formattedExpensesTotal = numeral(expensesTotal/100).format("$0,0.00");
+  const formattedExpensesTotal = numeral(expensesTotal / 100).format(
+    "$ 0,0[.]00"
+  );
   return (
     <div>
       <h3>

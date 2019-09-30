@@ -1,7 +1,7 @@
 .layout--container {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: calc(100vh - 76px);
     max-width: 60%;
     margin: 0 auto;
   }
@@ -19,7 +19,8 @@
   }
   .layout--nav a {
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 7px;
     cursor: pointer;
     color: green;
+    padding:8px 0px 8px 5px;
   }

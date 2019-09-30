@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { startRemoveBudget } from "../redux/actions/budget";
 import { Link } from "react-router-dom";
-import moment from 'moment'
-import {toast, Flip} from 'react-toastify'
-import numeral from 'numeral'
+import moment from "moment";
+import { toast, Flip } from "react-toastify";
+import numeral from "numeral";
 
 export const BudgetListItem = ({
   dispatch,
@@ -27,10 +27,10 @@ export const BudgetListItem = ({
         <span>{moment(createdAt).format("ddd, Do MMMM")}</span>
       </div>
       <div className="list-item--amount">
-        <h1>{numeral(amount / 100).format('$0,0.00')}</h1>
+        <h1>{numeral(amount / 100).format("$ 0,0[.]00")}</h1>
         <button
           onClick={e => {
-            notify()
+            notify();
             dispatch(startRemoveBudget(id));
           }}
         >

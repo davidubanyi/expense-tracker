@@ -7,6 +7,9 @@ const Layout = ({ children, dispatch }) => {
   return (
     <div className="layout--container">
       <div className="layout--nav">
+        <NavLink to="/dashboard" activeClassName="is-active">
+          ⚙️ Dashboard
+        </NavLink>
         <NavLink to="/expense" activeClassName="is-active">
           💸 Expenses
         </NavLink>
